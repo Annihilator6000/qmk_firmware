@@ -2,11 +2,19 @@
 
 Has layouts for Qwerty, Workman, Colemak, Colemak-Mod-DH, and Dvorak. Qwerty is the default layout. Layouts are switched Planck-style using momentary layer keys 1 and 2 (MO(1) and MO(2)) at the same time and pressing one of the H, J, K, L, or ; keys (this is while on the Qwerty layout - adjust if on another layout). See Layer 8 below for layout keys.
 
+<<<<<<< HEAD
 You can load the ut472_annihilator6000_configurator_file.json file in the [QMK Configurator](https://config.qmk.fm/#/ut472/LAYOUT) if you want to check out the configuration there or easily modify it.
 
 Make example for this keyboard (after setting up your build environment):
 
     make ut472:annihilator6000
+=======
+You can load the UT472_Annihilator6000_Configurator_file.json file in the [QMK Configurator](https://config.qmk.fm/#/ut472/LAYOUT) if you want to check out the configuration there or easily modify it.
+
+Make example for this keyboard (after setting up your build environment):
+
+    make ut472:Annihilator6000
+>>>>>>> e05b32d8941c90f5af8da85f29190c45e917bbd3
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
 
