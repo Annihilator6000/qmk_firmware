@@ -1,4 +1,4 @@
-/* Copyright 2018 Carlos Filoteo
+ /* Copyright 2018 Carlos Filoteo
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
  */
 #include QMK_KEYBOARD_H
 
-#define LT3_TAB LT(3, KC_TAB)
+#define LT3_TAB LT(7, KC_TAB)
 
 enum ut472_layers {
   _QWERTY,
@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-------------------------------------------------------------------------+
    * | Shift |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  |Sh/En|
    * |-------------------------------------------------------------------------+
-   * | Ctrl| Alt | Gui | App |  L2  |   Space   |  L1  | Left| Down|  Up |Right|
+   * | Ctrl| Alt | Gui | App | Lower|   Space   | Raise| Left| Down|  Up |Right|
    * `-------------------------------------------------------------------------'
    */
 [_QWERTY] = LAYOUT(
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-------------------------------------------------------------------------+
    * | Shift |  Z  |  X  |  M  |  C  |  V  |  K  |  L  |  ,  |  .  |  /  |Sh/En|
    * |-------------------------------------------------------------------------+
-   * | Ctrl| Alt | Gui | App |  L2  |   Space   |  L1  | Left| Down|  Up |Right|
+   * | Ctrl| Alt | Gui | App | Lower|   Space   | Raise| Left| Down|  Up |Right|
    * `-------------------------------------------------------------------------'
    */
 [_WORKMAN] = LAYOUT(
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+--------|
    * | Shift |  Z  |  X  |  C  |  V  |  B  |  K  |  M  |  ,  |  .  |  /  | Sh/En |
    * |-------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------|
-   * | Ctrl| Alt | GUI | App |  L2  |   Space   | L1 | Left | Down |  Up  |Right |
+   * | Ctrl| Alt | GUI | App | Lower|   Space   |Rais| Left | Down |  Up  |Right |
    * `---------------------------------------------------------------------------'
    */
 [_COLEMAK] = LAYOUT(
@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+--------|
    * | Shift |  X  |  C  |  D  |  V  |  Z  |  M  |  H  |  ,  |  .  |  /  | Sh/En |
    * |-------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------|
-   * | Ctrl| Alt | GUI | App |  L2  |   Space   | L1 | Left | Down |  Up  |Right |
+   * | Ctrl| Alt | GUI | App | Lower|   Space   |Rais| Left | Down |  Up  |Right |
    * `---------------------------------------------------------------------------'
    */
 [_COLEMAK_MOD_DH] = LAYOUT(
@@ -124,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-------|
    * | Shift |  ;  |  Q  |  J  |  K  |  X  |  B  |  M  |  W  |  V  |  Z  |Sh/En |
    * |-------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+------|
-   * | Ctrl| Alt | GUI | App |  L2  |   Space   | L1 | Left | Down |  Up |Right |
+   * | Ctrl| Alt | GUI | App | Lower|   Space   |Rais| Left | Down |  Up |Right |
    * `--------------------------------------------------------------------------'
    */
 [_DVORAK] = LAYOUT(
@@ -134,61 +134,61 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LCTL, KC_LALT, KC_LGUI, KC_APP,  LOWER,      KC_SPC,        RAISE,  KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT
 ),
 
-  /* FN Layer 1 - LOWER
+  /* FN Layer 2 - LOWER
+   * ,-------------------------------------------------------------------------.
+   * |   ~  |  !  |  @  |  #  |  $  |  %  |  ^  |  &  |  *  |  (  |  ) | Delete|
+   * |-------------------------------------------------------------------------+
+   * |      | F1  | F2  | F3  | F4  | F5  | F6  |  _  |  +  |  { |  }   |  |   |
+   * |-------------------------------------------------------------------------+
+   * | Capsl | F1  | F2  | F3  | F4  | F5  | F6  | F7  | F8  | F9  | F10 |     |
+   * |-------------------------------------------------------------------------+
+   * | Next| Vol-| Vol+| Play|      |          |       | Home| PgDn| PgUp| End |
+   * `-------------------------------------------------------------------------'
+   */
+[_LOWER] = LAYOUT(
+  KC_TILDE, KC_EXCLAIM, KC_AT, KC_HASH, KC_DOLLAR, KC_PERCENT, KC_CIRCUMFLEX, KC_AMPERSAND, KC_ASTERISK, KC_LEFT_PAREN, KC_RIGHT_PAREN, KC_DELETE,
+  _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDERSCORE, KC_PLUS, KC_LEFT_CURLY_BRACE, KC_RIGHT_CURLY_BRACE, KC_PIPE,
+  KC_CAPS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
+  KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY, _______,     _______,      _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END
+),
+
+  /* FN Layer 1 - RAISE
    * ,-------------------------------------------------------------------------.
    * | ` ~ |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  | Delete|
    * |-------------------------------------------------------------------------+
    * |      |     |     |     |     |     |     |  -  |  =  |  [  |  ]  |  \   |
    * |-------------------------------------------------------------------------+
-   * |       | F11 | F12 | F13 | F14 | F15 | F16 | F17 | F18 | F19 | F20 |     |
+   * | Capsl | F11 | F12 | F13 | F14 | F15 | F16 | F17 | F18 | F19 | F20 |     |
    * |-------------------------------------------------------------------------+
-   * |     |     |     |Capsl|      |          |       | Home| PgDn| PgUp| End |
-   * `-------------------------------------------------------------------------'
-   */
-[_LOWER] = LAYOUT(
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DELETE,
-  _______, RGB_TOG, RGB_MOD, RGB_VAI, RGB_VAD, _______, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
-  _______, KC_F11,  KC_F12,  KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20,  _______,
-  _______, _______, _______, KC_CAPS, _______,     _______,      _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END
-),
-
-  /* FN Layer 2 - RAISE
-   * ,-------------------------------------------------------------------------.
-   * |   ~  |  !  |  @  |  #  |  $  |  %  |  ^  |  &  |  *  |  (  |  )  |Delete|
-   * |-------------------------------------------------------------------------+
-   * |      |     |     |     |     |     |     |  _  |  +  |  { |  }  |   |   |
-   * |-------------------------------------------------------------------------+
-   * |       | F1  | F2  | F3  | F4  | F5  | F6  | F7  | F8  | F9  | F10 |     |
-   * |-------------------------------------------------------------------------+
-   * |     |     |     |Capsl|      |          |       | Home| PgDn| PgUp| End |
+   * | Next| Vol-| Vol+| Play|      |          |       | Home| PgDn| PgUp| End |
    * `-------------------------------------------------------------------------'
    */
 [_RAISE] = LAYOUT(
-  KC_TILDE, KC_EXCLAIM, KC_AT, KC_HASH, KC_DOLLAR, KC_PERCENT, KC_CIRCUMFLEX, KC_AMPERSAND, KC_ASTERISK, KC_LEFT_PAREN, KC_RIGHT_PAREN, KC_DELETE,
-  _______, _______, _______, _______, _______, _______, _______, KC_UNDERSCORE, KC_PLUS, KC_LEFT_CURLY_BRACE, KC_RIGHT_CURLY_BRACE, KC_PIPE,
-  _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
-  _______, _______, _______, KC_CAPS, _______,     _______,      _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END
+  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DELETE,
+  _______, RGB_TOG, RGB_MOD, RGB_VAI, RGB_VAD, _______, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
+  KC_CAPS, KC_F11,  KC_F12,  KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20,  _______,
+  KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY, _______,     _______,      _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END
 ),
 
   /* FN Layer 3 - Hold Tab
    * ,-------------------------------------------------------------------------.
-   * | Esc | Calc|Webhm| Mail| Comp|     |     |     |     |     |PrtSc|       |
+   * | Esc | Calc|Webhm| Mail| Comp|     |     |     | Ins |     |PrtSc|       |
    * |-------------------------------------------------------------------------+
    * |      |     |     |     |     |     |     |     |     |     |     |      |
    * |-------------------------------------------------------------------------+
-   * |       |    |     |     |     |     |     |     |     |     |      |     |
+   * | Capsl |    |     |     |     |     |     |     |     |     |      |     |
    * |-------------------------------------------------------------------------+
    * |     |     |     |     |      |          |       |MousL|MousD|MousU|MousR|
    * `-------------------------------------------------------------------------'
    */
 [_TAB] = LAYOUT(
-  KC_ESC,  KC_CALC, KC_WHOM, KC_MAIL, KC_MYCM, _______, _______, _______, _______, _______, KC_PSCR, _______,
+  KC_ESC,  KC_CALC, KC_WHOM, KC_MAIL, KC_MYCM, _______, _______, _______, KC_INS,  _______, KC_PSCR, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+  KC_CAPS, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______,     _______,      _______, KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R
 ),
 
-  /* Adjust (L1 + L2)
+  /* Adjust (Lower + Raise)
    *                   v-----------------------RGB CONTROL---------------------v
    * ,--------------------------------------------------------------------------
    * |Reset|     |     | RGB |RGBMO|HUE+ |HUE- |SAT+ |SAT- |BRT+ |BRT- |   Del |
@@ -206,11 +206,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
   DEBUG,   _______, _______, _______, _______,     _______,      _______, _______, _______, _______, _______
 )
-/* QWERTY    = H
+/*
+   Layout switching keys while on the QWERTY layer:
+   QWERTY    = H
    WORKMAN   = J
    COLEMAK   = K
      -MOD-DH = L
-   DVORAK    = ; */
+   DVORAK    = ;
+*/
 };
 
 
